@@ -9,21 +9,21 @@
     <body>
         <script>
 
-            const choice = ["rock", "paper", "scissors"];
-
             function getPlayerChoice(){
-                let playerSelection = prompt("Input yout choice", "Input");
+                let playerSelection = prompt("Input your choice (rock, paper, scissors)", "rock, paper, scissors");
 
                 playerSelection = playerSelection.toLowerCase();
 
                 return playerSelection;
             }
 
-            playerChoice = getPlayerChoice();
+            /*playerChoice = getPlayerChoice();
 
-            console.log(playerChoice);
+            console.log(playerChoice);*/
 
             function getComputerChoice(){
+
+                const choice = ["rock", "paper", "scissors"];
                 
                 let random = Math.floor(Math.random()*choice.length);
                 let computerSelection = "none";
@@ -40,9 +40,9 @@
                 return computerSelection;
             }
 
-            computerChoice = getComputerChoice(choice);
+            /*computerChoice = getComputerChoice(choice);
 
-            console.log(computerChoice);
+            console.log(computerChoice);*/
 
             function playRound(computerChoice, playerChoice){
 
@@ -79,7 +79,75 @@
                 return result;
             }
 
-            console.log(playRound(computerChoice, playerChoice));
+            /*console.log(playRound(computerChoice, playerChoice));*/
+
+            function game(){
+
+                let playerChoice = "";
+                let computerChoice = "";
+                let playerScore = 0;
+                let computerScore = 0;
+                
+                for(let i = 1; i <= 5; i++){
+
+                    playerChoice = getPlayerChoice();
+
+                    console.log(playerChoice);
+
+                    computerChoice = getComputerChoice();
+
+                    console.log(computerChoice);
+
+                    console.log(playRound(computerChoice, playerChoice));
+
+                    if(playRound(computerChoice, playerChoice) === "You lose! Paper beats Rock"){
+                        computerScore++;
+                        console.log("PLAYER SCORE: " + playerScore);
+                        console.log("COMPUTER SCORE: " + computerScore);
+                    }
+                    if(playRound(computerChoice, playerChoice) === "You lose! Scissors beats Paper"){
+                        computerScore++;
+                        console.log("PLAYER SCORE: " + playerScore);
+                        console.log("COMPUTER SCORE: " + computerScore);
+                    }
+                    if(playRound(computerChoice, playerChoice) === "You lose! Rock beats Scissors"){
+                        computerScore++;
+                        console.log("PLAYER SCORE: " + playerScore);
+                        console.log("COMPUTER SCORE: " + computerScore);
+                    }
+                    if(playRound(computerChoice, playerChoice) === "You win! Paper beats Rock"){
+                        playerScore++;
+                        console.log("PLAYER SCORE: " + playerScore);
+                        console.log("COMPUTER SCORE: " + computerScore);
+                    }
+                    if(playRound(computerChoice, playerChoice) === "You win! Rock beats Scissors"){
+                        playerScore++;
+                        console.log("PLAYER SCORE: " + playerScore);
+                        console.log("COMPUTER SCORE: " + computerScore);
+                    }
+                    if(playRound(computerChoice, playerChoice) === "You win! Scissors beats Paper"){
+                        playerScore++;
+                        console.log("PLAYER SCORE: " + playerScore);
+                        console.log("COMPUTER SCORE: " + computerScore);
+                    }
+                    if(playRound(computerChoice, playerChoice) === "It's a tie!"){
+                        console.log("PLAYER SCORE: " + playerScore);
+                        console.log("COMPUTER SCORE: " + computerScore);
+                    }
+                }
+
+                if(playerScore > computerScore){
+                    console.log("YOU WIN! COMPUTER LOSE!");
+                }
+                if(computerScore > playerScore){
+                    console.log("YOU LOSE! COMPUTER WINS!");
+                }
+                if(playerScore === computerScore){
+                    console.log("IT'S A DRAW! THERE'S NO WINNER!");
+                }
+            }
+
+            game();
 
         </script>
     </body>
